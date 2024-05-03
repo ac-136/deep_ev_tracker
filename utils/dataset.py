@@ -72,6 +72,29 @@ class TrackData:
         """
         self.config = config
 
+        ### My code ###
+        # print()
+        # print("FRAME TEST")
+        track_path = str(track_tuple[0])
+        # print(track_path)
+        no_extras = track_path.replace("multiflow_extras", "multiflow")
+        pos_tracks = no_extras.find("tracks")
+        no_tracks = no_extras[:pos_tracks]
+        images_path = no_tracks + "images\\"
+        # print(images_path)
+        all_image_paths = []
+        for item in os.listdir(images_path):
+            # Construct the full path of the item
+            item_path = os.path.join(images_path, item)
+            
+            # Check if the item is a file
+            if os.path.isfile(item_path):
+                # If it's a file, append its path to the list of file paths
+                all_image_paths.append(item_path)
+        # print(all_image_paths)
+        
+
+
         # Track augmentation (disabled atm)
         if False:
             # if config.augment:
@@ -84,7 +107,7 @@ class TrackData:
         self.last_aug_angle, self.last_aug_scale = 0.0, 1.0
 
         # Get input paths
-        self.frame_paths = config.frame_paths
+        self.frame_paths = all_image_paths
         self.event_paths = config.event_paths
 
         # TODO: Do this in a non-hacky way
@@ -96,7 +119,6 @@ class TrackData:
             print("Unsupported dt for feature track")
             raise NotImplementedError
 
-        # Input and Labels
         ref_input = read_input(self.frame_paths[0], "grayscale")
         ref_input = augment_input(
             ref_input, self.flipped_lr, self.flipped_ud, self.rotation_angle
@@ -269,15 +291,15 @@ class MFDataModule(LightningDataModule):
         self,
         data_dir,
         extra_dir,
-        dt=0.0100,
+        dt=0.0200,
         batch_size=16,
         num_workers=4,
         patch_size=31,
         augment=False,
-        n_train=20000,
-        n_val=2000,
-        track_name="shitomasi_custom",
-        representation="time_surfaces_v2_1",
+        n_train=1700,
+        n_val=300,
+        track_name="shitomasi_custom_v5",
+        representation="time_surfaces_v2_5",
         mixed_dt=False,
         **kwargs,
     ):
@@ -308,6 +330,9 @@ class MFDataModule(LightningDataModule):
             cache_path = (
                 self.extra_dir / split_name / ".cache" / f"{track_name}.paths.pkl"
             )
+
+            os.makedirs(cache_path.parent, exist_ok=True)
+
             if cache_path.exists():
                 with open(str(cache_path), "rb") as cache_f:
                     track_tuples = pickle.load(cache_f)
@@ -315,7 +340,7 @@ class MFDataModule(LightningDataModule):
                 track_tuples = retrieve_track_tuples(
                     self.extra_dir / split_name, track_name
                 )
-                with open(str(cache_path), "wb") as cache_f:
+                with open(cache_path, "wb") as cache_f:
                     pickle.dump(track_tuples, cache_f)
 
             # Shuffle and trim
@@ -327,7 +352,7 @@ class MFDataModule(LightningDataModule):
             track_tuples_array = track_tuples_array[rand_perm, :, :].reshape(
                 (n_tracks // 64) * 64, 2
             )
-            track_tuples_array[:, 1] = track_tuples_array[:, 1].astype(np.int)
+            track_tuples_array[:, 1] = track_tuples_array[:, 1].astype(int)
             track_tuples = []
             for i in range(track_tuples_array.shape[0]):
                 track_tuples.append(
@@ -388,7 +413,7 @@ class MFDataModule(LightningDataModule):
         return [
             event_p
             for event_p in event_files
-            if 400000 <= int(os.path.split(event_p)[1].replace(".h5", "")) <= 900000
+            if 400000 <= int(float((os.path.split(event_p)[1].replace(".h5", "")))) <= 900000
         ]
 
     def setup(self, stage=None):
@@ -1121,7 +1146,7 @@ class EDSSubseq(SequenceDataset):
 class ECSubseq(SequenceDataset):
     # ToDO: Add to config file
     pose_r = 4
-    pose_mode = False
+    pose_mode = True
 
     def __init__(
         self,
@@ -1136,8 +1161,12 @@ class ECSubseq(SequenceDataset):
     ):
         super().__init__()
 
+        # for evaluate_real
+        self.pose_mode = False
+
         # Store config
-        self.root_dir = Path(root_dir)
+        # self.root_dir = Path(root_dir)
+        self.root_dir = Path("C:/Users/Ashley/CSCI5561/deep_ev_tracker/ec_subseq")
         self.sequence_name = sequence_name
         self.patch_size = patch_size
         self.representation = representation
@@ -1152,6 +1181,7 @@ class ECSubseq(SequenceDataset):
             self.n_frames = max_frames
         else:
             self.n_frames = n_frames
+
 
         # Check that event representations have been generated for this dt
         if not self.pose_mode:
@@ -2152,6 +2182,24 @@ class ECPoseSegmentDataset(ECSubseqDatasetV2):
         )
 
     def get_next(self):
+        # print()
+        # print("EVENT REPRESENTATION PATHS")
+        # print(self.sequence_dir)
+        event_path = str(self.sequence_dir) + "\\events\\pose_5\\time_surfaces_v2_5\\"
+        # print(event_path)
+        all_events = []
+        for item in os.listdir(event_path):
+            # Construct the full path of the item
+            item_path = os.path.join(event_path, item)
+            
+            # Check if the item is a file
+            if os.path.isfile(item_path):
+                # If it's a file, append its path to the list of file paths
+                all_events.append(item_path)
+        # print(all_events)
+        # print()
+        self.event_representation_paths = all_events
+
         self.event_representation_idx += 1
         self.t_now = (
             float(

@@ -270,7 +270,7 @@ class LayerScale(nn.Module):
 class TrackerNetC(Template):
     def __init__(
         self,
-        representation="time_surfaces_1",
+        representation="time_surfaces_v2_5",
         max_unrolls=16,
         n_vis=8,
         feature_dim=1024,

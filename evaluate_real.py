@@ -24,6 +24,8 @@ from utils.visualization import generate_track_colors, render_pred_tracks, rende
 # Configure GPU order
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 
+os.environ["HYDRA_FULL_ERROR"] = "1"
+
 # Logging
 logger = logging.getLogger(__name__)
 results_table = PrettyTable()
@@ -33,15 +35,15 @@ results_table.field_names = ["Inference Time"]
 corner_config = CornerConfig(30, 0.3, 15, 0.15, False, 11)
 
 EvalDatasetConfigDict = {
-    EvalDatasetType.EC: {"dt": 0.010, "root_dir": "<path>"},
-    EvalDatasetType.EDS: {"dt": 0.005, "root_dir": "<path>"},
+    EvalDatasetType.EC: {"dt": 0.01, "root_dir": "C:/Users/Ashley/CSCI5561/deep_ev_tracker/ec_subseq"},
+    # EvalDatasetType.EDS: {"dt": 0.005, "root_dir": "<path>"},
 }
 
 EVAL_DATASETS = [
-    ("peanuts_light_160_386", EvalDatasetType.EDS),
-    ("rocket_earth_light_338_438", EvalDatasetType.EDS),
-    ("ziggy_in_the_arena_1350_1650", EvalDatasetType.EDS),
-    ("peanuts_running_2360_2460", EvalDatasetType.EDS),
+    # ("peanuts_light_160_386", EvalDatasetType.EDS),
+    # ("rocket_earth_light_338_438", EvalDatasetType.EDS),
+    # ("ziggy_in_the_arena_1350_1650", EvalDatasetType.EDS),
+    # ("peanuts_running_2360_2460", EvalDatasetType.EDS),
     ("shapes_translation_8_88", EvalDatasetType.EC),
     ("shapes_rotation_165_245", EvalDatasetType.EC),
     ("shapes_6dof_485_565", EvalDatasetType.EC),
@@ -100,6 +102,8 @@ def evaluate(model, sequence_dataset, dt_track_vis, sequence_name, visualize):
         delimiter=" ",
     )
 
+    print(sequence_name)
+
     metrics = {}
     metrics["latency"] = sum(cuda_timers[sequence_dataset.sequence_name])
 
@@ -123,6 +127,8 @@ def track(cfg):
         model = model.cuda()
     model.eval()
 
+    # print("reached")
+
     # Run evaluation on each dataset
     for seq_name, seq_type in EVAL_DATASETS:
         if seq_type == EvalDatasetType.EC:
@@ -131,6 +137,10 @@ def track(cfg):
             dataset_class = EDSSubseq
         else:
             raise ValueError
+
+        print(EvalDatasetConfigDict[seq_type]["root_dir"])
+        print(seq_name)
+        print(EvalDatasetConfigDict[seq_type]["dt"])
 
         dataset = dataset_class(
             EvalDatasetConfigDict[seq_type]["root_dir"],
@@ -154,6 +164,8 @@ def track(cfg):
         logger.info(f"Latency: {metrics['latency']} s")
 
         results_table.add_row([metrics["latency"]])
+
+        print()
 
     logger.info(f"\n{results_table.get_string()}")
 

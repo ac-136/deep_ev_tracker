@@ -15,7 +15,7 @@ from utils.losses import *
 class Template(LightningModule):
     def __init__(
         self,
-        representation="time_surfaces_1",
+        representation="time_surfaces_v2_5",
         max_unrolls=16,
         n_vis=8,
         patch_size=31,
@@ -155,11 +155,11 @@ class Template(LightningModule):
         else:
             attn_mask = torch.zeros([nt, nt], device=self.device)
             for i_src in range(nt):
-                src_path = batch_dataloaders[i_src].track_path.split("/")[-3]
+                src_path = batch_dataloaders[i_src].track_path.split("\\")[-3]
                 for i_target in range(nt):
                     attn_mask[i_src, i_target] = (
                         src_path
-                        == batch_dataloaders[i_target].track_path.split("/")[-3]
+                        == batch_dataloaders[i_target].track_path.split("\\")[-3]
                     )
         attn_mask = (1 - attn_mask).bool()
 
@@ -318,11 +318,14 @@ class Template(LightningModule):
         else:
             attn_mask = torch.zeros([nt, nt], device=self.device)
             for i_src in range(nt):
-                src_path = batch_dataloaders[i_src].track_path.split("/")[-3]
+                # print()
+                # print(batch_dataloaders[i_src].track_path.split("/"))
+                # print()
+                src_path = batch_dataloaders[i_src].track_path.split("\\")[-3]
                 for i_target in range(nt):
                     attn_mask[i_src, i_target] = (
                         src_path
-                        == batch_dataloaders[i_target].track_path.split("/")[-3]
+                        == batch_dataloaders[i_target].track_path.split("\\")[-3]
                     )
         attn_mask = (1 - attn_mask).bool()
 
@@ -459,6 +462,14 @@ class Template(LightningModule):
                     img_patch_ref = torch.from_numpy(
                         self.graymap(img_patch_ref)[:, :, :3]
                     )
+
+                    # # test no issues with image patch generation
+                    # plt.imshow(img_patch_ref)
+                    # plt.savefig('C:/Users/Ashley/CSCI5561/deep_ev_tracker/patch_reference_image.png')
+                    # print()
+                    # print(img_patch_ref.shape) # 31 x 124 x3
+                    # print()
+
                     self.logger.experiment.add_image(
                         f"time_surface_ref/patch_{i_vis}",
                         img_patch_ref,

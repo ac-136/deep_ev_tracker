@@ -1,0 +1,63 @@
+age_5_mu
+Sequence Name,network_pred_multi_klt
+shapes_translation_8_88,0.03616626889331106
+shapes_rotation_165_245,0.041139292920414086
+shapes_6dof_485_565,0.0
+boxes_translation_330_410,0.014466718703735691
+boxes_rotation_198_278,0.017125717173440035
+age_5_std
+Sequence Name,network_pred_multi_klt
+shapes_translation_8_88,0.00808708787166484
+shapes_rotation_165_245,0.00837268318311131
+shapes_6dof_485_565,0.0
+boxes_translation_330_410,0.008087039200645258
+boxes_rotation_198_278,0.007446002420737449
+te_5_mu
+Sequence Name,network_pred_multi_klt
+shapes_translation_8_88,2.411058062483195
+shapes_rotation_165_245,2.8623562423498923
+shapes_6dof_485_565,0.0
+boxes_translation_330_410,3.8225587031205572
+boxes_rotation_198_278,3.2979689682646223
+te_5_std
+Sequence Name,network_pred_multi_klt
+shapes_translation_8_88,0.49579545898696037
+shapes_rotation_165_245,0.6560744117163433
+shapes_6dof_485_565,0.0
+boxes_translation_330_410,0.6474237446092133
+boxes_rotation_198_278,0.8725010746769554
+age_mu
+Sequence Name,network_pred_multi_klt
+shapes_translation_8_88,0.07020926410800028
+shapes_rotation_165_245,0.13271750241419072
+shapes_6dof_485_565,0.010759442600722228
+boxes_translation_330_410,0.06390641126297034
+boxes_rotation_198_278,0.05749125093842199
+age_std
+Sequence Name,network_pred_multi_klt
+shapes_translation_8_88,0.02632352977538006
+shapes_rotation_165_245,0.05514692900291225
+shapes_6dof_485_565,0.013269925898225943
+boxes_translation_330_410,0.02902062834596407
+boxes_rotation_198_278,0.035140380384872306
+inliers_mu
+Sequence Name,network_pred_multi_klt
+shapes_translation_8_88,0.9769585253456221
+shapes_rotation_165_245,0.9596774193548387
+shapes_6dof_485_565,0.27419354838709675
+boxes_translation_330_410,0.8914956011730205
+boxes_rotation_198_278,0.8522920203735141
+inliers_std
+Sequence Name,network_pred_multi_klt
+shapes_translation_8_88,0.08959549352637594
+shapes_rotation_165_245,0.1661564336938429
+shapes_6dof_485_565,0.35466271295186463
+boxes_translation_330_410,0.2864758936872957
+boxes_rotation_198_278,0.2085730075101693
+expected_age
+Sequence Name,network_pred_multi_klt
+shapes_translation_8_88,0.06982427052565876
+shapes_rotation_165_245,0.131431262262074
+shapes_6dof_485_565,0.007227408532074455
+boxes_translation_330_410,0.0628829217256885
+boxes_rotation_198_278,0.05271743597051318

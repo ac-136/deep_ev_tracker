@@ -10,6 +10,7 @@ from utils.utils import *
 
 logger = logging.getLogger(__name__)
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+os.environ['HYDRA_FULL_ERROR'] = '1'
 torch.set_num_threads(1)
 torch.backends.cudnn.benchmark = True
 

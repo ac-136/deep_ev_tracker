@@ -317,6 +317,12 @@ class PoseInterpolator:
 
 def retrieve_track_tuples(extra_dir, track_name):
     track_tuples = []
+    i = 0
+    # print()
+    # print(extra_dir)
+    # print(len(list(extra_dir.iterdir())))
+    # print(list(extra_dir.iterdir())[0:5])
+    # print()
     for extra_seq_dir in tqdm(extra_dir.iterdir(), desc="Fetching track paths..."):
         # Ignore hidden dirs
         if str(extra_seq_dir.stem).startswith("."):
@@ -324,6 +330,13 @@ def retrieve_track_tuples(extra_dir, track_name):
 
         # Check if has valid tracks
         track_path = os.path.join(str(extra_seq_dir), "tracks", f"{track_name}.gt.txt")
+
+        # if i == 0:
+        #     print()
+        #     print("TRACK PATH")
+        #     print(track_path)
+        #     print()
+
         if not os.path.exists(track_path):
             continue
 
@@ -332,6 +345,8 @@ def retrieve_track_tuples(extra_dir, track_name):
         n_tracks = len(np.unique(track_data[:, 0]))
         for track_idx in range(n_tracks):
             track_tuples.append((track_path, track_idx))
+
+        i += 1
 
     return track_tuples
 
@@ -506,6 +521,10 @@ def compute_tracking_errors(
     :param error_threshold: threshold for a live track (5 px used in HASTE paper)
     :return: None, prints the mean relative feature age and mean track-normed error
     """
+
+    # print(pred_track_data.shape)
+    # print()
+    # print(gt_track_data.shape)
 
     fa_rel_arr, te_arr = [], []
 

@@ -1,0 +1,63 @@
+age_5_mu
+Sequence Name,network_pred_klt
+shapes_translation_8_88,0.0869558466964593
+shapes_rotation_165_245,0.04545457899111462
+shapes_6dof_485_565,0.0
+boxes_translation_330_410,0.0
+boxes_rotation_198_278,0.012658086867193928
+age_5_std
+Sequence Name,network_pred_klt
+shapes_translation_8_88,0.0
+shapes_rotation_165_245,0.0
+shapes_6dof_485_565,0.0
+boxes_translation_330_410,0.0
+boxes_rotation_198_278,0.0
+te_5_mu
+Sequence Name,network_pred_klt
+shapes_translation_8_88,4.1056741643781764
+shapes_rotation_165_245,4.065157149197161
+shapes_6dof_485_565,0.0
+boxes_translation_330_410,0.0
+boxes_rotation_198_278,3.0672599626727406
+te_5_std
+Sequence Name,network_pred_klt
+shapes_translation_8_88,0.0
+shapes_rotation_165_245,0.0
+shapes_6dof_485_565,0.0
+boxes_translation_330_410,0.0
+boxes_rotation_198_278,0.0
+age_mu
+Sequence Name,network_pred_klt
+shapes_translation_8_88,0.1991580926533658
+shapes_rotation_165_245,0.1275040759699844
+shapes_6dof_485_565,0.018987275912756306
+boxes_translation_330_410,0.0
+boxes_rotation_198_278,0.03674965429394897
+age_std
+Sequence Name,network_pred_klt
+shapes_translation_8_88,0.09863644040356681
+shapes_rotation_165_245,0.06513414780023802
+shapes_6dof_485_565,0.018187831273636195
+boxes_translation_330_410,0.0
+boxes_rotation_198_278,0.02165303694930706
+inliers_mu
+Sequence Name,network_pred_klt
+shapes_translation_8_88,0.3010752688172043
+shapes_rotation_165_245,0.4274193548387097
+shapes_6dof_485_565,0.13548387096774195
+boxes_translation_330_410,0.0
+boxes_rotation_198_278,0.08211143695014661
+inliers_std
+Sequence Name,network_pred_klt
+shapes_translation_8_88,0.09855001494528687
+shapes_rotation_165_245,0.15803159630859218
+shapes_6dof_485_565,0.13807054554214643
+boxes_translation_330_410,0.0
+boxes_rotation_198_278,0.026877276803260054
+expected_age
+Sequence Name,network_pred_klt
+shapes_translation_8_88,0.06638603088445529
+shapes_rotation_165_245,0.0625301424632586
+shapes_6dof_485_565,0.004654945290538562
+boxes_translation_330_410,0.0
+boxes_rotation_198_278,0.0033408776630862703

@@ -1,16 +1,19 @@
 name: mf
 
+# _target_: utils.dataset.MFDataModule
 _target_: utils.dataset.MFDataModule
-data_dir: <path>
-extra_dir: <path>
+data_dir: C:/Users/Ashley/CSCI5561/deep_ev_tracker/multiflow
+extra_dir: C:/Users/Ashley/CSCI5561/deep_ev_tracker/multiflow_extras
 dt: 0.0200
 num_workers: 4
 
 # For tracks
-batch_size: 32
-n_train: 30000
-n_val: 1000
+batch_size: 16
+# n_train: 30000
+# n_val: 1000
+n_train: 1700
+n_val: 300
 
-augment: True
+augment: False
 global_mode: False
 mixed_dt: True

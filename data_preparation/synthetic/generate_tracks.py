@@ -23,7 +23,7 @@ QUALITY_LEVEL = 0.3
 BLOCK_SIZE = 25
 K = 0.15
 USE_HARRIS_DETECTOR = False
-OUTPUT_DIR = None
+OUTPUT_DIR = "multiflow_extras"
 TRACK_NAME = "shitomasi_custom_v5"
 
 # Filtering
@@ -113,9 +113,11 @@ def generate_single_track(seq_dir, dt=0.01):
     filtered_tracks = filtered_tracks[sorted_idxs]
 
     # Write tracks to disk
-    tracks_dir = OUTPUT_DIR / split / seq_dir.stem / "tracks"
-    if not tracks_dir.exists():
-        tracks_dir.mkdir()
+    # tracks_dir = OUTPUT_DIR / split / seq_dir.stem / "tracks"
+    tracks_dir = Path(OUTPUT_DIR) / split / Path(seq_dir.stem) / "tracks"
+    # if not tracks_dir.exists():
+    #     tracks_dir.mkdir()
+    tracks_dir.mkdir(parents=True, exist_ok=True)
     output_path = tracks_dir / f"{TRACK_NAME}.gt.txt"
     np.savetxt(output_path, filtered_tracks)
 

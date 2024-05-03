@@ -32,7 +32,7 @@ def prepare_data(root_dir, sequence_name):
 
     # Undistort images
     images_dir = sequence_dir / 'images_corrected'
-    images_dir.mkdir()
+    # images_dir.mkdir()
     for img_idx, img_path in enumerate(tqdm(sorted(glob(str(sequence_dir / 'images' / '*.png'))),
                                             desc="Undistorting images...")):
         img = cv2.imread(img_path)

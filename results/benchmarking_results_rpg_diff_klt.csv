@@ -1,0 +1,63 @@
+age_5_mu
+Sequence Name,network_pred_rpg_diff_klt
+shapes_translation_8_88,0.03978295737856159
+shapes_rotation_165_245,0.041139256869254195
+shapes_6dof_485_565,0.0
+boxes_translation_330_410,0.013233771172819724
+boxes_rotation_198_278,0.01732166190395692
+age_5_std
+Sequence Name,network_pred_rpg_diff_klt
+shapes_translation_8_88,0.004429420140863668
+shapes_rotation_165_245,0.00548125216783309
+shapes_6dof_485_565,0.0
+boxes_translation_330_410,0.0026366738648083963
+boxes_rotation_198_278,0.00735865018326085
+te_5_mu
+Sequence Name,network_pred_rpg_diff_klt
+shapes_translation_8_88,2.2082561456810175
+shapes_rotation_165_245,2.9349507308391765
+shapes_6dof_485_565,0.0
+boxes_translation_330_410,3.8395318615631213
+boxes_rotation_198_278,3.3710314408651003
+te_5_std
+Sequence Name,network_pred_rpg_diff_klt
+shapes_translation_8_88,0.24765862386895662
+shapes_rotation_165_245,0.14587774086453334
+shapes_6dof_485_565,0.0
+boxes_translation_330_410,0.5406159673831188
+boxes_rotation_198_278,0.7536803811709213
+age_mu
+Sequence Name,network_pred_rpg_diff_klt
+shapes_translation_8_88,0.07320756057997546
+shapes_rotation_165_245,0.14664154928008696
+shapes_6dof_485_565,0.011746113903056977
+boxes_translation_330_410,0.06279014007119547
+boxes_rotation_198_278,0.057748016802769316
+age_std
+Sequence Name,network_pred_rpg_diff_klt
+shapes_translation_8_88,0.026934978571076896
+shapes_rotation_165_245,0.06590336500166866
+shapes_6dof_485_565,0.013635738175656156
+boxes_translation_330_410,0.029820695558302652
+boxes_rotation_198_278,0.035394595788991595
+inliers_mu
+Sequence Name,network_pred_rpg_diff_klt
+shapes_translation_8_88,0.9861751152073732
+shapes_rotation_165_245,0.9596774193548387
+shapes_6dof_485_565,0.34838709677419355
+boxes_translation_330_410,0.8944281524926686
+boxes_rotation_198_278,0.9202037351443124
+inliers_std
+Sequence Name,network_pred_rpg_diff_klt
+shapes_translation_8_88,0.0757220125583179
+shapes_rotation_165_245,0.18068835889038773
+shapes_6dof_485_565,0.4369033020216003
+boxes_translation_330_410,0.28780119011200167
+boxes_rotation_198_278,0.22838942914499474
+expected_age
+Sequence Name,network_pred_rpg_diff_klt
+shapes_translation_8_88,0.07303256350005129
+shapes_rotation_165_245,0.14653946533122908
+shapes_6dof_485_565,0.009513961890102179
+boxes_translation_330_410,0.06227044029199543
+boxes_rotation_198_278,0.05660731154808631
